@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="bg-gray-50">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store</title>
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://fakhrul62.github.io/icons/css/fontawesome.css">
+    <link rel="stylesheet" href="https://fakhrul62.github.io/icons/css/sharp-light.css">
+    <link rel="stylesheet" href="https://fakhrul62.github.io/icons/css/sharp-solid.css">
+    <!-- custom -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- slider -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <header class="bg-gray-100">
+        <div
+            class=" navbar bg-gray-100 w-11/12 mx-auto mb-10 flex 2xl:flex-row xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col">
+            <div
+                class="navbar-start w-screen 2xl:justify-start xl:justify-start lg:justify-start md:justify-start sm:justify-start justify-center">
+                <div class="dropdown absolute left-0">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                        id="catagory-nav1">
+                        <li><a id="all" class="nav-list" onclick="getProducts();showCategory('All Products')">All</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="index.html"
+                    class="logo 2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-xl text-xl py-[10px]">Fake
+                    Store</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1" id="catagory-nav2">
+                    <li><a id="all" class="nav-list active" onclick="getProducts();showCategory('All Products')">All</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-end flex justify-center w-screen gap-3">
+                <button
+                    class="btn btn-sqr 2xl:py-2 2xl:px-4 py-1 px-2 !text-sm 2xl:min-h-12 2xl:h-12 min-h-8 h-8  btn-outline btn-primary tooltip tooltip-bottom hover:!bg-[#845EC2] hover:!text-white !text-[#845EC2] !border-[#845EC2] w-auto"
+                    onclick="sortByPrice()" data-tip="Sort By Price"><i
+                        class="fa-sharp fa-light fa-arrow-up-1-9"></i></button>
+                <button
+                    class="btn btn-sqr 2xl:py-2 2xl:px-4 py-1 px-2 !text-sm 2xl:min-h-12 2xl:h-12 min-h-8 h-8  btn-outline btn-primary tooltip tooltip-bottom hover:!bg-[#845EC2] hover:!text-white !text-[#845EC2] !border-[#845EC2] w-auto"
+                    data-tip="Sort By Rating"><i class="fa-sharp fa-light fa-arrow-down-wide-short"
+                        onclick="sortByRatings()"></i></button>
+                <div class="join *:border-[#845EC2] *:hover:border-[#845EC2] flex">
+                    <input class="input input-bordered join-item 2xl:min-h-12 2xl:h-12 min-h-8 h-8 flex-initial !w-36"
+                        id="search-field" placeholder="Search..." />
+                    <button
+                        class="flex-initial w-fit btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2] 2xl:min-h-12 2xl:h-12 min-h-8 h-8"
+                        onclick="search()"><i class="fa-sharp fa-light fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <!-- hero -->
+        <section id="hero">
+            <div class="hero-slider absolute w-full top-1/4 -z-10">
+                <div><img src="images/undraw_shopping_app_flsj-modified.png" alt=""></div>
+                <div><img src="images/undraw_Shopping_re_hdd9-modified.png" alt=""></div>
+                <div><img src="images/undraw_Successful_purchase_re_mpig-modified.png" alt=""></div>
+                <div><img src="images/undraw_web_shopping_re_owap-modified.png" alt=""></div>
+                <div><img src="images/undraw_Window_shopping_re_0kbm-modified.png" alt=""></div>
+            </div>
+            <div class="w-11/12 mx-auto z-10 mt-48 p-2 body-text grid">
+                <div>
+                    <h1 class="text-7xl font-bold w-1/2">Find your favourite here</h1>
+                    <div class="btn-grp mt-10">
+                        <button
+                            class="btn btn-white border border-[#845EC2] hover:border-[#845EC2] hover:bg-[#845EC2] hover:text-white">Browse
+                            Categories</button>
+                        <!-- <button class="btn btn-white border border-[#845EC2] hover:border-[#845EC2] hover:bg-[#845EC2] hover:text-white"> All</button> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- hero bottom -->
+        <section class="hero-bottom my-10">
+            <div class="w-11/12 mx-auto">
+                <div class="grid grid-cols-3 gap-10">
+                    <div
+                        class="bg-[url('images/pexels-elletakesphotos-1549200.jpg')] h-72 bg-center bg-cover flex justify-center items-center">
+                        <div class="bg-[#00000071] w-[93%] h-[90%] flex justify-center items-center">
+                            <h4 class="font-medium text-white text-xl">Electronics</h4>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-[url('images/pexels-jmendezrf-1536619.jpg')] h-72 bg-center bg-cover flex justify-center items-center">
+                  
+                        <div class="bg-[#00000071] w-[93%] h-[90%] flex justify-center items-center">
+                            <h4 class="font-medium text-white text-xl">Jewelery</h4>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-[url('images/pexels-olly-994234.jpg')] h-72 bg-center bg-cover flex justify-center items-center">
+                
+                        <div class="bg-[#00000071] w-[93%] h-[90%] flex justify-center items-center">
+                            <h4 class="font-medium text-white text-xl">Men's Clothing</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- all -->
+        <section class="all">
+            <div class="w-11/12 mx-auto">
+                <div class=" all-div">
+                    <h1 class="text-2xl font-bold mb-5 all-title capitalize" id="currentCategory">50% Flat Sale!</h1>
+                </div>
+                <div id="item-container"
+                    class="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <!-- scripts -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/slick.min.js"></script>
+    <script src="https://fakhrul62.github.io/icons/js/fontawesome.js"></script>
+    <script src="https://fakhrul62.github.io/icons/js/sharp-light.js"></script>
+    <script src="https://fakhrul62.github.io/icons/js/sharp-solid.js"></script>
+</body>
+
+</html>
